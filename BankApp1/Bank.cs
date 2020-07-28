@@ -6,11 +6,11 @@ namespace BankApp1
 {
     public class Bank
     {
-        //public static List<Customer> AllCustomers = new List<Customer>();
-        //public void NewCustomer()
-        //{
-        //    AllCustomers.Add(new Customer());
-        //}
+        public static List<Customer> AllCustomers = new List<Customer>();
+        public void NewCustomer(string firstName, string password)
+        {
+            AllCustomers.Add(new Customer(firstName, password));
+        }
 
         //public void GetAllCustomers(List<Customer> customers)
         //{

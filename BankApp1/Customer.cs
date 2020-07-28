@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BankApp1
 {
-    class Customer
+     public class Customer
     {
         private static int CustomerIdSeed = 1;
         public Customer(string firstName, string password)
@@ -16,6 +16,11 @@ namespace BankApp1
             CustomerIdSeed++;
 
         }
+
+        public Customer()
+        {
+        }
+
         public string CustomerId { get; }
         public string Password { get; set;}
         public string CustomerFirstName { get; set; }
@@ -28,7 +33,7 @@ namespace BankApp1
                 return CustomerLastName + ", " + CustomerFirstName;
             }
         }
-        public  List<Account> AllAccount = new List<Account>();
+        public static List<Account> AllAccount = new List<Account>();
 
         public void CreateAccount(string name, DateTime date)
         {

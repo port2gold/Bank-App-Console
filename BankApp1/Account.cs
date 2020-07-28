@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BankApp1
 {
-    class Account
+    public class Account
     {
         private static int AccountNumberSeed = 0123456789;
 
@@ -63,8 +63,21 @@ namespace BankApp1
         {
             return AccountBalance.ToString();
         }
+        public void Transfer(string _AccountNumber, decimal amount, DateTime date, string note )
+        {
+            foreach (var item in Customer.AllAccount)
+            {
+                if (item.AccountNumber == _AccountNumber)
+                {
+                    item.Deposit(amount, DateTime.Now, note);
+                }
+                this.Withdrawal(amount, DateTime.Now, note);
+            }
+                  
+        }
 
       //  public void MyProperty { get; set; }
+
 
     }
 }
