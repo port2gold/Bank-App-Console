@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
@@ -41,9 +42,14 @@ namespace BankApp1
 
             Console.WriteLine("To Exit our wonderful Bank Press ===============> 3");
             Console.WriteLine("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+            string response = "";
 
+            while (response != "1" || response != "2" || response!= "3")
+            {
+                Console.WriteLine("Please enter 1   ,  2   or  3");
+                response += (Console.ReadLine());
+            }
 
-//            var Response
 
 
             //Customer kay = new Customer();
