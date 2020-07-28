@@ -8,12 +8,14 @@ namespace BankApp1
      public class Customer
     {
         private static int CustomerIdSeed = 1;
-        public Customer(string firstName, string password)
+        public Customer(string firstName, string password, string _Email, string _lastName)
         {   
             Password = password;
             CustomerFirstName = firstName;
             CustomerId = CustomerIdSeed.ToString();
             CustomerIdSeed++;
+            CustomerEmail = _Email;
+            CustomerLastName = _lastName;
 
         }
 

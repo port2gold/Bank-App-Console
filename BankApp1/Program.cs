@@ -42,14 +42,41 @@ namespace BankApp1
 
             Console.WriteLine("To Exit our wonderful Bank Press ===============> 3");
             Console.WriteLine("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-            string response = "";
 
-            while (response != "1" || response != "2" || response!= "3")
+            Console.WriteLine("INPUT: ");
+            int response = Convert.ToInt32(Console.ReadLine());
+            if (response < 1 && response > 2) 
             {
-                Console.WriteLine("Please enter 1   ,  2   or  3");
-                response += (Console.ReadLine());
+
+                throw new ArgumentOutOfRangeException(nameof(response), "Please Input  1    ,     2     or  3");
             }
 
+            if (response == 1)
+            {
+                Console.WriteLine("Enter your First Name: ");
+                string firstName = Console.ReadLine();
+                Console.WriteLine("Enter your LastName: ");
+                string lastName = Console.ReadLine();
+
+                Console.WriteLine("Enter your Email: ");
+                string Email = Console.ReadLine();
+                
+                Console.WriteLine("Enter your Password");
+                string password = Console.ReadLine();
+                Bank.NewCustomer(firstName, password, Email, lastName);
+                Console.WriteLine("Successfully Registered!!!");
+                
+            }
+            else
+            {
+                Console.WriteLine("Please Enter your  First Name and your Password: ");
+                Console.WriteLine("FIRST NAME: ");
+                string firstName1 = Console.ReadLine();
+                Console.WriteLine("PASSWORD: ");
+                string password1 = Console.ReadLine();
+                Bank.LogIn(firstName1, password1);
+               
+            }
 
 
             //Customer kay = new Customer();
