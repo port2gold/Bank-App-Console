@@ -55,7 +55,7 @@ namespace BankApp1
 
                 throw new ArgumentOutOfRangeException(nameof(response), "Please Input  1    ,     2     or  3");
             }
-            //Create an Account
+            // Regiser  and Create an Account
             if (response == 1)
             {
                 Console.WriteLine("Enter your First Name: ");
@@ -70,7 +70,27 @@ namespace BankApp1
                 string password = Console.ReadLine();
                 Bank.NewCustomer(firstName, password, Email, lastName);
                 Console.WriteLine("Successfully Registered!!!");
-                
+                foreach (var items in Bank.AllCustomers)
+                {
+                    if (items.CustomerFirstName == firstName)
+                    {
+                        items.CreateAccount(items.CustomerFullName, DateTime.Now);
+                        Console.WriteLine("Account Creation Successful");
+                        foreach (var item in Customer.AllAccount)
+                        {
+                            for( int i =0; i < Customer.AllAccount.Count; i++)
+                            {
+                                if (Customer.AllAccount[i].AccountOwner == items.CustomerFullName)
+                                {
+                                    Console.WriteLine($"Your Account Number is {Customer.AllAccount[i].AccountNumber}");
+
+                                }
+                            }
+                            
+                            
+                        }
+                    }
+                }
             }
             else
             {
@@ -81,11 +101,83 @@ namespace BankApp1
                 string password1 = Console.ReadLine();
                 Bank.LogIn(firstName1, password1);
 
+
+                
+
                 Console.WriteLine("==========(DEPOSIT) =====================> PRESS  1");
                 Console.WriteLine("==========(WITHRAWAL) ===================> PRESS  2");
                 Console.WriteLine("==========(BALANCE) =====================> PRESS  3");
                 Console.WriteLine(" =========(TRANSFER)=====================> PRESS  4");
-                Console.WriteLine("========(ACCOUNT HISTORY)================> PRESS  5");
+                Console.WriteLine(" =======(OPEN AN ACCOUNT)================> PRESS  5");
+                Console.WriteLine("========(ACCOUNT HISTORY)================> PRESS  6");
+                int answer = Convert.ToInt32(Console.ReadLine()); 
+                if (answer == 1)
+                {
+                   // foreach (var item in Bank.AllCustomers)
+                    {
+                        Console.WriteLine("Enter Account Number: ");
+                        string accountNumber = Console.ReadLine();
+
+
+                        Console.WriteLine("Enter the Amount to Deposit: ");
+                        decimal amount = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter Note: ");
+                        string note = Console.ReadLine();
+                       for (int i =0; i <Customer.AllAccount.Count; i++)
+                        {
+                            if (Customer.AllAccount[i].AccountNumber == accountNumber)
+                            {
+                                Customer.AllAccount[i].Deposit(amount, DateTime.Now, note);
+                            }
+                       }
+                    }
+                }
+                else if (answer == 2)
+                {
+                    {
+                        Console.WriteLine("Enter Receiver Account Number: ");
+                        string accountNumber1 = Console.ReadLine();
+                        Console.WriteLine("Enter Your Account Number: ");
+                        string accountNumber2 = Console.ReadLine();
+                        
+
+                        Console.WriteLine("Enter the Amount to Deposit: ");
+                        decimal amount = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter Note: ");
+                        string note = Console.ReadLine();
+                        for (int i = 0; i < Customer.AllAccount.Count; i++)
+                        {
+                            if (Customer.AllAccount[i].AccountNumber == accountNumber1)
+                            {
+                                Customer.AllAccount[i].Deposit(amount, DateTime.Now, note);
+                            }
+
+                            if (Customer.AllAccount[i].AccountNumber == accountNumber2)
+                            {
+                                Customer.AllAccount[i].Withdrawal(amount, DateTime.Now, note);
+                            }
+                        }
+                    }
+                }
+                else if (answer == 3)
+                {
+                    Console.WriteLine("Enter Your Account Number: ");
+                    string _accountNumber = Console.ReadLine();
+                    foreach (var item in Customer.AllAccount)
+                    {
+                        if (item.AccountNumber == _accountNumber) 
+                        {
+                            item.Balance();
+                        }
+                    }
+                }
+                else if (answer ==4)
+                {
+
+                }
+                 
+
+                
             }
 
 
