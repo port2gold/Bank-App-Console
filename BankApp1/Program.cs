@@ -18,6 +18,11 @@ namespace BankApp1
         }
         static void Main(string[] args)
         {
+            foreach ( var item in Bank.AllCustomers)
+            {
+                Console.WriteLine($"{item.CustomerFullName} {item.CustomerEmail} {item.Password}");
+            }
+                
             Bank myBank = new Bank();
             Console.WriteLine("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -" );
             Console.WriteLine("Welcome to the Most Wonderful Bank");
@@ -50,7 +55,7 @@ namespace BankApp1
 
                 throw new ArgumentOutOfRangeException(nameof(response), "Please Input  1    ,     2     or  3");
             }
-
+            //Create an Account
             if (response == 1)
             {
                 Console.WriteLine("Enter your First Name: ");
@@ -60,7 +65,7 @@ namespace BankApp1
 
                 Console.WriteLine("Enter your Email: ");
                 string Email = Console.ReadLine();
-                
+             
                 Console.WriteLine("Enter your Password");
                 string password = Console.ReadLine();
                 Bank.NewCustomer(firstName, password, Email, lastName);
@@ -75,7 +80,12 @@ namespace BankApp1
                 Console.WriteLine("PASSWORD: ");
                 string password1 = Console.ReadLine();
                 Bank.LogIn(firstName1, password1);
-               
+
+                Console.WriteLine("==========(DEPOSIT) =====================> PRESS  1");
+                Console.WriteLine("==========(WITHRAWAL) ===================> PRESS  2");
+                Console.WriteLine("==========(BALANCE) =====================> PRESS  3");
+                Console.WriteLine(" =========(TRANSFER)=====================> PRESS  4");
+                Console.WriteLine("========(ACCOUNT HISTORY)================> PRESS  5");
             }
 
 

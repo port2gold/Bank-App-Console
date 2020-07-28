@@ -39,6 +39,12 @@ namespace BankApp1
                 {
                     Console.WriteLine("SUCCESSFUL SIGN IN");
                 }
+                else
+                {
+                    Console.WriteLine("Invalid FIRSTNAME Or PASSWORD");
+                    Console.WriteLine("This Incident will be REPORTED to the ADMIN");
+                    throw new ArgumentException(nameof(firstName), "Password Incorrect");
+                }
             }
         }
     }
