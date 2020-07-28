@@ -105,10 +105,10 @@ namespace BankApp1
                 
 
                 Console.WriteLine("==========(DEPOSIT) =====================> PRESS  1");
-                Console.WriteLine("==========(WITHRAWAL) ===================> PRESS  2");
+                Console.WriteLine("==========(TRANSFER) ===================> PRESS  2");
                 Console.WriteLine("==========(BALANCE) =====================> PRESS  3");
-                Console.WriteLine(" =========(TRANSFER)=====================> PRESS  4");
-                Console.WriteLine(" =======(OPEN AN ACCOUNT)================> PRESS  5");
+                Console.WriteLine(" =========(WITHDRAWAL)=====================> PRESS  4");
+                Console.WriteLine(" =======(OPEN ANOTHER ACCOUNT)================> PRESS  5");
                 Console.WriteLine("========(ACCOUNT HISTORY)================> PRESS  6");
                 int answer = Convert.ToInt32(Console.ReadLine()); 
                 if (answer == 1)
@@ -173,12 +173,48 @@ namespace BankApp1
                 }
                 else if (answer ==4)
                 {
-
+                    Console.WriteLine("Enter the Amount to Deposit: ");
+                    decimal amount = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Enter Note: ");
+                    string note = Console.ReadLine();
+                    Console.WriteLine("Enter Your Account Number: ");
+                    string _accountNumber = Console.ReadLine();
+                    foreach (var item in Customer.AllAccount)
+                    {
+                        if (item.AccountNumber == _accountNumber)
+                        {
+                            item.Withdrawal(amount, DateTime.Now, note);
+                        }
+                    }
                 }
+                else //(answer == 5)
+                {
+                    Console.WriteLine("ENTER YOUR FIRST NAME");
+                    string _firstName = Console.ReadLine();
+                    foreach ( var item in Bank.AllCustomers)
+                    {
+                        if(item.CustomerFirstName == _firstName)
+                        {
+                            item.CreateAccount(item.CustomerFullName, DateTime.Now);
+                        }
+                    }
+                }
+                //else
+                //{
+                //    //Console.WriteLine("Enter Your Account Number: ");
+                    //string _accountNumber = Console.ReadLine();
+                    //foreach (var item in Customer.AllAccount)
+                    //{
+                    //    if (item.AccountNumber == _accountNumber)
+                    //    {
+                            
+                    //    }
+            }
+        }
                  
 
                 
-            }
+    }
 
 
             //Customer kay = new Customer();
@@ -226,6 +262,6 @@ namespace BankApp1
             ////{
             //    Console.WriteLine($"{kay.CustomerFirstName} {kay.AllAccount[1].AccountNumber} {kay.AllAccount[1].AccountBalance}");
             //}
-        }
-    }
+        
+    
 }
