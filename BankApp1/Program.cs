@@ -9,21 +9,10 @@ namespace BankApp1
 {
     class Program
     {
-        enum BankOptions
-        {
-            Register = 1,
-            LogIn = 2,
-            CloseBankApp = 3
-
-        }
+        
         static void Main(string[] args)
         {
-            //foreach (var item in Bank.AllCustomers)
-            //{
-            //    Console.WriteLine($"{item.CustomerFullName} {item.CustomerEmail} {item.Password}");
-            //}
-
-            //Bank myBank = new Bank();
+            
             bool signIn = true;
             while (signIn == true)
             {
@@ -73,6 +62,9 @@ namespace BankApp1
                     string password = Console.ReadLine();
                     Bank.NewCustomer(firstName, password, Email, lastName);
                     Console.WriteLine("Successfully Registered!!!");
+                    
+                    //Account Creation
+                    
                     foreach (var items in Bank.AllCustomers)
                     {
                         if (items.CustomerFirstName == firstName)
@@ -95,16 +87,17 @@ namespace BankApp1
                         }
                     }
                 }
+                //LOG IN
                 else
                 {
-                    Console.WriteLine("Please Enter your  First Name and your Password: ");
+                    Console.WriteLine("Please Enter your  First Name and your Password Twice: ");
                     Console.WriteLine("FIRST NAME: ");
                     string firstName1 = Console.ReadLine();
                     Console.WriteLine("PASSWORD: ");
                     string password1 = Console.ReadLine();
                     Bank.LogIn(firstName1, password1);
 
-
+                    //Bank Options
 
 
                     Console.WriteLine("==========(DEPOSIT) =======================> PRESS  1");
@@ -115,6 +108,8 @@ namespace BankApp1
                     Console.WriteLine("========(ACCOUNT HISTORY)===================> PRESS  6");
                     Console.WriteLine("===========(LOG OUT=========================> PRESS  7");
                     int answer = Convert.ToInt32(Console.ReadLine());
+                   
+                    // Deposit
                     if (answer == 1)
                     {
                         // foreach (var item in Bank.AllCustomers)
@@ -136,6 +131,7 @@ namespace BankApp1
                             }
                         }
                     }
+                    //Transfer
                     else if (answer == 2)
                     {
                         {
@@ -163,6 +159,9 @@ namespace BankApp1
                             }
                         }
                     }
+
+                    //Balance
+
                     else if (answer == 3)
                     {
                         Console.WriteLine("Enter Your Account Number: ");
@@ -175,6 +174,10 @@ namespace BankApp1
                             }
                         }
                     }
+
+
+                    //WITHDRAWAL
+
                     else if (answer == 4)
                     {
                         Console.WriteLine("Enter the Amount to Deposit: ");
@@ -191,6 +194,9 @@ namespace BankApp1
                             }
                         }
                     }
+
+                    //Create Multiple Accounts
+
                     else if (answer == 5)
                     {
                         Console.WriteLine("ENTER YOUR FIRST NAME");
@@ -203,9 +209,12 @@ namespace BankApp1
                             }
                         }
                     }
+
+                    //Account History
+
                     else if (answer == 6)
                     {
-                        Console.WriteLine("To check your Accoun History: ");
+                        Console.WriteLine("To check your Account History: ");
                         Console.WriteLine("ENTER YOUR ACCOUNT NUMBER: ");
                         string _accountNumber = Console.ReadLine();
                         foreach (var item in Customer.AllAccount)
@@ -221,6 +230,10 @@ namespace BankApp1
                         }
 
                     }
+
+
+                    //SIGN OUT
+                    
                     else
                     {
                         signIn = false;
@@ -247,67 +260,6 @@ namespace BankApp1
 
 
 
-
-
-
-
-    //else
-    //{
-    //    //Console.WriteLine("Enter Your Account Number: ");
-    //string _accountNumber = Console.ReadLine();
-    //foreach (var item in Customer.AllAccount)
-    //{
-    //    if (item.AccountNumber == _accountNumber)
-    //    {
-
-    //    }
-
-
-    //Customer kay = new Customer();
-    //kay.CustomerFirstName = "Lamba";
-    //kay.CustomerLastName = "Lord";
-    //kay.CustomerEmail = "l.lamba@gmail.com";
-    ////Console.WriteLine(kay.CustomerFullName);
-    ////Console.WriteLine(kay.CustomerId);
-    ////Console.WriteLine(kay.CustomerEmail);
-    //kay.CreateAccount(kay.CustomerFullName, DateTime.Now);
-    //Customer customer = new Customer();
-    //customer.CustomerEmail = "kaybeebaba@gmail.com";
-    //customer.CustomerFirstName = "kabir";
-    //customer.CustomerLastName = "Omotoso";
-    //customer.CreateAccount("kabir", DateTime.Now);
-    ////foreach (var item in kay.AllAccount)
-    ////{
-    ////    Console.WriteLine("Customer Id                 Customer Name               Account Number            Account Type              Date Created");
-    ////    Console.WriteLine($"{kay.CustomerId}               {item.AccountOwner}              {item.AccountNumber}             {item.AccountType}              {item.DateCreated}");
-    ////}
-    ////foreach (var item in customer.AllAccount)
-    ////{
-    ////    Console.WriteLine($"{kay.CustomerId}       {item.AccountBalance}      {item.AccountOwner}               {item.AccountNumber}               {item.AccountType}              {item.DateCreated}");
-    ////}
-    //kay.AllAccount[0].Deposit(10000, DateTime.Now, "Money from friends");
-    //kay.AllAccount[0].Deposit(500000, DateTime.Now, "Money for Goods");
-    //kay.AllAccount[0].Deposit(220200, DateTime.Now, "Money for travelling");
-    //kay.CreateAccount(kay.CustomerFirstName, DateTime.Now);
-    //kay.AllAccount[1].Deposit(2000000, DateTime.Now, "Initial Deposit");
-    //kay.AllAccount[1].Deposit(503000, DateTime.Now, "Big Deposit");
-    //kay.AllAccount[1].Deposit(5000, DateTime.Now, "Big Deposit");
-    //kay.AllAccount[1].Withdrawal(1111, DateTime.Now, "Big Deposit");
-
-
-
-    ////foreach (var item in kay.AllAccount[0].AllTransactions)
-    ////{
-    ////    Console.WriteLine($"{kay.AllAccount[0].AccountOwner} {kay.AllAccount[0].AccountNumber} {kay.AllAccount[0].AccountBalance} {item.Amount} {item.Date} {item.Notes}");
-    ////}
-    //// Console.WriteLine(Customer.GetAllCustomers(AllCustomers));
-    //// Bank.GetAllCustomers(AllCustomers);  
-    //kay.AllAccount[1].Withdrawal(2500, DateTime.Now, "Rent");
-    //Console.WriteLine($"#{kay.AllAccount[0].Balance()}");
-    ////foreach (var item in kay.AllAccount[1].AllTransactions)
-    ////{
-    //    Console.WriteLine($"{kay.CustomerFirstName} {kay.AllAccount[1].AccountNumber} {kay.AllAccount[1].AccountBalance}");
-    //}
 
 
 

@@ -5,6 +5,7 @@ using System.Text;
 
 namespace BankApp1
 {
+    //Customer Related Fields
      public class Customer
     {
         private static int CustomerIdSeed = 1;
@@ -18,7 +19,7 @@ namespace BankApp1
             CustomerLastName = _lastName;
 
         }
-
+        //Customer Constructor
         public Customer()
         {
         }
@@ -28,6 +29,8 @@ namespace BankApp1
         public string CustomerFirstName { get; set; }
         public string CustomerLastName { get; set; }
         public string CustomerEmail { get; set; }
+        //Customer Full name 
+        //Concatenation of First Name and Last Name
         public string CustomerFullName
         {
             get
@@ -35,8 +38,10 @@ namespace BankApp1
                 return CustomerLastName + ", " + CustomerFirstName;
             }
         }
+        //Account List
         public static List<Account> AllAccount = new List<Account>();
 
+        //Create Account Method
         public void CreateAccount(string name, DateTime date)
         {
             AllAccount.Add(new Account(name, date));
