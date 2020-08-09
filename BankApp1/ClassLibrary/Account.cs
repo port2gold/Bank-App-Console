@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Linq;
 
 namespace BankApp1
 {
     //Account Related Fields
     public class Account
     {
-        private static int AccountNumberSeed = 0123456789;
+        private static int AccountNumberSeed = 1234567890;
 
 
         public string AccountNumber { get; }
@@ -45,18 +46,23 @@ namespace BankApp1
             {
                 throw new ArgumentOutOfRangeException(nameof(amount), "Positive Amount Only!");
             }
-
-            AllTransactions.Add(new Transactions(amount, date, note));
+            var deposit = new Transactions(amount, date, note);
+            AllTransactions.Add(deposit);
         }
         //All Transactions List and  Account Withdrawal
         public void Withdrawal(decimal amount, DateTime date, string note)
         {
-            if (amount < 0 && AccountBalance - amount < 100)
+            if (amount < 0) 
             {
                 throw new ArgumentOutOfRangeException(nameof(amount), "Positive Amount Only!");
             }
-            AccountBalance -= amount;
-            AllTransactions.Add(new Transactions(-amount, date, note));
+            if (AccountBalance -amount < 100)
+            {
+                throw new ArgumentOutOfRangeException("You don't have sufficient funds");
+            }
+
+            var withdrawal = new Transactions(-amount, date, note);
+            AllTransactions.Add(withdrawal);
             
         }
         //Account Balance Check
